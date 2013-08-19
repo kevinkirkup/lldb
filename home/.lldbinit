@@ -1,0 +1,25 @@
+##################################################
+# LLDB Debugger customization
+##################################################
+
+##################################################
+# Display view hierarchy
+##################################################
+command regex rd 's/^[[:space:]]*$/po [[UIApp keyWindow] recursiveDescription]/' 's/^(.+)$/po [%1 recursiveDescription]/'
+
+command regex rsd 's/.*/po [UIApp Rob_recursiveSceneDescription]/'
+
+##################################################
+# Example import of external script
+##################################################
+#command script import ~/.../lldb/sniff_objc_exception_throw.py
+
+##################################################
+# Commands for autolayout
+##################################################
+command regex hcons 's/^(.+)$/po [(id)%1 constraintsAffectingLayoutForAxis:0]/'
+command regex vcons 's/^(.+)$/po [(id)%1 constraintsAffectingLayoutForAxis:1]/'
+command regex cons 's/^(.+)$/script lldb.debugger.HandleCommand("po [(id)%1 constraintsAffectingLayoutForAxis:0]"); lldb.debugger.HandleCommand("po [(id)%1 constraintsAffectingLayoutForAxis:1]")/'
+
+command regex altrace 's/^[[:space:]]*$/po [[UIApp keyWindow] _autolayoutTrace]/' 's/^(.+)$/po [%1 _autolayoutTrace]/'
+

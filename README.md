@@ -1,4 +1,7 @@
 lldb
 ====
 
-LLDB Initialization and debug scripts
+LLDB Customization Scripts and commands
+
+# Contribution have come from
+* [Rob Mayoff](https://github.com/mayoff)

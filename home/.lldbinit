@@ -5,9 +5,7 @@
 ##################################################
 # Display view hierarchy
 ##################################################
-command regex rd 's/^[[:space:]]*$/po [[UIApp keyWindow] recursiveDescription]/' 's/^(.+)$/po [%1 recursiveDescription]/'
-
-command regex rsd 's/.*/po [UIApp Rob_recursiveSceneDescription]/'
+command regex rd 's/^[[:space:]]*$/po [[[UIApplication sharedApplication] keyWindow] recursiveDescription]/' 's/^(.+)$/po [%1 recursiveDescription]/'
 
 ##################################################
 # Example import of external script

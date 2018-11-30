@@ -1,23 +1,31 @@
+# Allow source the lldbinit in the current directory
+settings set target.load-cwd-lldbinit false
+
 ##################################################
 # LLDB Debugger customization
 ##################################################
 
-##################################################
+#-------------------------------------------------
 # Display view hierarchy
-##################################################
-command regex rd 's/^[[:space:]]*$/po [[[UIApplication sharedApplication] keyWindow] recursiveDescription]/' 's/^(.+)$/po [%1 recursiveDescription]/'
+#-------------------------------------------------
+#command regex rd 's/^[[:space:]]*$/po [[[UIApplication sharedApplication] keyWindow] recursiveDescription]/' 's/^(.+)$/po [%1 recursiveDescription]/'
+command regex rd 's/^[[:space:]]*$/expr -l objc++ -O -- [[UIWindow keyWindow] recursiveDescription]/' 's/^(.+)$/expr -l objc++ -O -- [[%1 recursiveDescription]/'
 
-##################################################
+#-------------------------------------------------
 # Example import of external script
-##################################################
+#-------------------------------------------------
 #command script import ~/.../lldb/sniff_objc_exception_throw.py
 
-##################################################
+#-------------------------------------------------
 # Commands for autolayout
-##################################################
+#-------------------------------------------------
 command regex hcons 's/^(.+)$/po [(id)%1 constraintsAffectingLayoutForAxis:0]/'
 command regex vcons 's/^(.+)$/po [(id)%1 constraintsAffectingLayoutForAxis:1]/'
 command regex cons 's/^(.+)$/script lldb.debugger.HandleCommand("po [(id)%1 constraintsAffectingLayoutForAxis:0]"); lldb.debugger.HandleCommand("po [(id)%1 constraintsAffectingLayoutForAxis:1]")/'
 
 command regex altrace 's/^[[:space:]]*$/po [[UIApp keyWindow] _autolayoutTrace]/' 's/^(.+)$/po [%1 _autolayoutTrace]/'
 
+#-------------------------------------------------
+# Commands for Facebook chisel
+#-------------------------------------------------
+command script import /usr/local/opt/chisel/libexec/fblldb.py

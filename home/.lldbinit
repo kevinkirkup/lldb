@@ -29,3 +29,8 @@ command regex altrace 's/^[[:space:]]*$/po [[UIApp keyWindow] _autolayoutTrace]/
 # Commands for Facebook chisel
 #-------------------------------------------------
 command script import /usr/local/opt/chisel/libexec/fblldb.py
+
+#-------------------------------------------------
+# Kaleidoscope integration for Xcode
+#-------------------------------------------------
+command script import "/Users/kevinkirkup/Library/Application Support/Kaleidoscope/lldb_ksdiff.py"
